@@ -7,6 +7,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const form = document.querySelector("form");
+const errorMessage = document.querySelectorAll(".error-message");
 
 //Declare Functions
 
@@ -14,26 +15,60 @@ const form = document.querySelector("form");
 
 // }
 
+function pwRequirements(password) {
+	let checkedPw = password.value;
+
+	checkedPw.includes();
+}
+
+function checkMatch(e) {
+	if (password.value !== confirmPassword.value) {
+		confirmPassword.setCustomValidity("not a match");
+	} else {
+		confirmPassword.setCustomValidity("");
+	}
+	confirmPassword.reportValidity();
+}
+
 //Call Functions
 
-// form.addEventListener("submit", function (e) {
-// 	e.preventDefault();
-// 	localStorage.setItem;
-// });
-
-username.addEventListener("blur", function (e) {
+username.addEventListener("input", function () {
 	if (username.value === "") {
 		username.setCustomValidity("ENTER A USERNAME");
 	} else {
 		username.setCustomValidity("");
 	}
+
 	username.reportValidity();
 });
-email.addEventListener("blur", function (e) {
+email.addEventListener("input", function (e) {
 	if (email.value === "") {
 		email.setCustomValidity("ENTER A USERNAME");
 	} else {
 		email.setCustomValidity("");
 	}
 	email.reportValidity();
+});
+
+password.addEventListener("input", function (e) {
+	if (password.value.length < 8 || password.value === "") {
+		password.setCustomValidity("password not long enough");
+	} else {
+		password.setCustomValidity("");
+	}
+	password.reportValidity();
+});
+
+confirmPassword.addEventListener("input", checkMatch);
+
+form.addEventListener("submit", function (e) {
+	e.preventDefault();
+	localStorage.setItem("username", username.value);
+});
+
+window.addEventListener("load", () => {
+	const usernameFromLocalStor = localStorage.getItem("username");
+	if (usernameFromLocalStor) {
+		username.value = usernameFromLocalStor;
+	}
 });

@@ -15,15 +15,11 @@ const errorMessage = document.querySelectorAll(".error-message");
 
 // }
 
-function pwRequirements(password) {
-	let checkedPw = password.value;
-
-	checkedPw.includes();
-}
-
 function checkMatch(e) {
 	if (password.value !== confirmPassword.value) {
 		confirmPassword.setCustomValidity("not a match");
+	} else if (confirmPassword.value.patternMismatch) {
+		confirmPassword.setCustomValidity("Pattern doesn't match");
 	} else {
 		confirmPassword.setCustomValidity("");
 	}
@@ -53,6 +49,8 @@ email.addEventListener("input", function (e) {
 password.addEventListener("input", function (e) {
 	if (password.value.length < 8 || password.value === "") {
 		password.setCustomValidity("password not long enough");
+	} else if (password.value.patternMismatch) {
+		password.setCustomValidity("Pattern doesn't match");
 	} else {
 		password.setCustomValidity("");
 	}

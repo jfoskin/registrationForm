@@ -7,6 +7,7 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const confirmPassword = document.getElementById("confirmPassword");
 const form = document.querySelector("form");
+const submitBtn = document.querySelector("submit");
 const errorMessage = document.querySelectorAll(".error-message");
 
 //Declare Functions
@@ -62,6 +63,10 @@ confirmPassword.addEventListener("input", checkMatch);
 form.addEventListener("submit", function (e) {
 	e.preventDefault();
 	localStorage.setItem("username", username.value);
+	username.value = "";
+	email.value = "";
+	password.value = "";
+	confirmPassword.value = "";
 });
 
 window.addEventListener("load", () => {

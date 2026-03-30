@@ -17,8 +17,6 @@ How to store and set data in the local storage object
 
 ### Reflections
 
-This project was very challengeing for me. Each way I thought and approached solving this problem I realized it was a much more complex way in solving this issue.I had to change or completely start over when trying to complete certain features because the implementation wouldn't work the way I thought it would. However It had me looking deeper into JavaScript concepts trying to consider how I could implement my initial plan. Which I'm greatful to at least have come across new methods concepts and even options on some methods.Given more time I would style my project and fix some of the bugs I came across.
-
 How did event.preventDefault() help in handling form submission?
 
 It helped to prevent the Page from reloading once the form was submitted.
